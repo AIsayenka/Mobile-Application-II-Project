@@ -7,24 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		48D4808C1AD595C2002A4C12 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D47FD11AD595C2002A4C12 /* GoogleMaps.framework */; };
-		48D4808D1AD595C2002A4C12 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D47FD11AD595C2002A4C12 /* GoogleMaps.framework */; };
 		F44394CD1AB3668800C1D4F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F44394CC1AB3668800C1D4F5 /* main.m */; };
 		F44394D01AB3668800C1D4F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F44394CF1AB3668800C1D4F5 /* AppDelegate.m */; };
 		F44394D31AB3668800C1D4F5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F44394D21AB3668800C1D4F5 /* ViewController.m */; };
-		F44394D61AB3668800C1D4F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44394D41AB3668800C1D4F5 /* Main.storyboard */; };
 		F44394D81AB3668800C1D4F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44394D71AB3668800C1D4F5 /* Images.xcassets */; };
-		F44394DB1AB3668800C1D4F5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44394D91AB3668800C1D4F5 /* LaunchScreen.xib */; };
 		F44394E71AB3668800C1D4F5 /* Mobile_Application_II_ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F44394E61AB3668800C1D4F5 /* Mobile_Application_II_ProjectTests.m */; };
 		F467E5FB1AD1F6A700EA6C96 /* Statements.m in Sources */ = {isa = PBXBuildFile; fileRef = F467E5FA1AD1F6A700EA6C96 /* Statements.m */; };
 		F467E5FE1AD1F80900EA6C96 /* DisplayStatements.m in Sources */ = {isa = PBXBuildFile; fileRef = F467E5FD1AD1F80900EA6C96 /* DisplayStatements.m */; };
 		F467E6011AD1F87C00EA6C96 /* DownloadAndDisplayStatements.m in Sources */ = {isa = PBXBuildFile; fileRef = F467E6001AD1F87C00EA6C96 /* DownloadAndDisplayStatements.m */; };
 		F467E6051AD1FB2D00EA6C96 /* Statement.m in Sources */ = {isa = PBXBuildFile; fileRef = F467E6041AD1FB2D00EA6C96 /* Statement.m */; };
-		F48DF8CD1AD1C8C2009BF024 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F48DF8CC1AD1C8C2009BF024 /* libsqlite3.dylib */; };
 		F48E64C31AD1BE25006E411C /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F48E64C21AD1BE25006E411C /* DBManager.m */; };
-		F48E64C51AD1C270006E411C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48E64C41AD1C270006E411C /* MapKit.framework */; };
-		F4E83ECD1AD1EF7F00055A9D /* arrayList.json in Resources */ = {isa = PBXBuildFile; fileRef = F4E83ECC1AD1EF7F00055A9D /* arrayList.json */; };
-		F4E83ECF1AD1EFF300055A9D /* arrayList.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4E83ECC1AD1EF7F00055A9D /* arrayList.json */; };
+		F4C547321AD7388A00500411 /* StatementsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C547311AD7388A00500411 /* StatementsTVC.m */; };
+		F4C547391AD73DBA00500411 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C547381AD73DBA00500411 /* libsqlite3.dylib */; };
+		F4C5473B1AD73DF000500411 /* arrayList.json in Resources */ = {isa = PBXBuildFile; fileRef = F4C5473A1AD73DF000500411 /* arrayList.json */; };
+		F4C5473D1AD73E2200500411 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C5473C1AD73E2200500411 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,14 +40,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				F4E83ECF1AD1EFF300055A9D /* arrayList.json in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		48D47FD11AD595C2002A4C12 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		F44394C71AB3668800C1D4F5 /* Mobile Application II Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile Application II Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44394CB1AB3668800C1D4F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F44394CC1AB3668800C1D4F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -73,11 +67,13 @@
 		F467E6001AD1F87C00EA6C96 /* DownloadAndDisplayStatements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadAndDisplayStatements.m; path = ../DownloadAndDisplayStatements.m; sourceTree = "<group>"; };
 		F467E6031AD1FB2D00EA6C96 /* Statement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statement.h; sourceTree = "<group>"; };
 		F467E6041AD1FB2D00EA6C96 /* Statement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statement.m; sourceTree = "<group>"; };
-		F48DF8CC1AD1C8C2009BF024 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		F48E64C11AD1BE25006E411C /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		F48E64C21AD1BE25006E411C /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
-		F48E64C41AD1C270006E411C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		F4E83ECC1AD1EF7F00055A9D /* arrayList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrayList.json; sourceTree = "<group>"; };
+		F4C547301AD7388A00500411 /* StatementsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatementsTVC.h; sourceTree = "<group>"; };
+		F4C547311AD7388A00500411 /* StatementsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatementsTVC.m; sourceTree = "<group>"; };
+		F4C547381AD73DBA00500411 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		F4C5473A1AD73DF000500411 /* arrayList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = arrayList.json; path = "../Mobile-Application-II-Project-Gipps/arrayList.json"; sourceTree = "<group>"; };
+		F4C5473C1AD73E2200500411 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,9 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48D4808C1AD595C2002A4C12 /* GoogleMaps.framework in Frameworks */,
-				F48DF8CD1AD1C8C2009BF024 /* libsqlite3.dylib in Frameworks */,
-				F48E64C51AD1C270006E411C /* MapKit.framework in Frameworks */,
+				F4C5473D1AD73E2200500411 /* MapKit.framework in Frameworks */,
+				F4C547391AD73DBA00500411 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +90,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48D4808D1AD595C2002A4C12 /* GoogleMaps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,13 +99,12 @@
 		F44394BE1AB3668800C1D4F5 = {
 			isa = PBXGroup;
 			children = (
-				48D47FD11AD595C2002A4C12 /* GoogleMaps.framework */,
-				F48DF8CC1AD1C8C2009BF024 /* libsqlite3.dylib */,
-				F48E64C41AD1C270006E411C /* MapKit.framework */,
+				F4C5473C1AD73E2200500411 /* MapKit.framework */,
+				F4C5473A1AD73DF000500411 /* arrayList.json */,
+				F4C547381AD73DBA00500411 /* libsqlite3.dylib */,
 				F44394C91AB3668800C1D4F5 /* Mobile Application II Project */,
 				F44394E31AB3668800C1D4F5 /* Mobile Application II ProjectTests */,
 				F44394C81AB3668800C1D4F5 /* Products */,
-				F4E83ECC1AD1EF7F00055A9D /* arrayList.json */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,6 +164,8 @@
 		F467E6021AD1F8E700EA6C96 /* Statements */ = {
 			isa = PBXGroup;
 			children = (
+				F4C547301AD7388A00500411 /* StatementsTVC.h */,
+				F4C547311AD7388A00500411 /* StatementsTVC.m */,
 				F467E6031AD1FB2D00EA6C96 /* Statement.h */,
 				F467E6041AD1FB2D00EA6C96 /* Statement.m */,
 				F467E5F91AD1F6A700EA6C96 /* Statements.h */,
@@ -229,7 +224,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = COMP3097;
+				ORGANIZATIONNAME = TeamPros;
 				TargetAttributes = {
 					F44394C61AB3668800C1D4F5 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -302,10 +297,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F44394D61AB3668800C1D4F5 /* Main.storyboard in Resources */,
-				F4E83ECD1AD1EF7F00055A9D /* arrayList.json in Resources */,
-				F44394DB1AB3668800C1D4F5 /* LaunchScreen.xib in Resources */,
 				F44394D81AB3668800C1D4F5 /* Images.xcassets in Resources */,
+				F4C5473B1AD73DF000500411 /* arrayList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +322,7 @@
 				F467E6051AD1FB2D00EA6C96 /* Statement.m in Sources */,
 				F44394CD1AB3668800C1D4F5 /* main.m in Sources */,
 				F467E6011AD1F87C00EA6C96 /* DownloadAndDisplayStatements.m in Sources */,
+				F4C547321AD7388A00500411 /* StatementsTVC.m in Sources */,
 				F48E64C31AD1BE25006E411C /* DBManager.m in Sources */,
 				F467E5FB1AD1F6A700EA6C96 /* Statements.m in Sources */,
 			);
@@ -482,12 +476,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/GoogleMapsSDKDemos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -503,12 +492,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/GoogleMapsSDKDemos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Mobile Application II ProjectTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

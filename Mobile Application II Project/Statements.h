@@ -12,6 +12,6 @@
 
 @interface Statements : NSObject
 
-@property (strong, nonatomic)NSArray* statements;
+@property (strong, nonatomic)NSMutableArray* statements;
 
 @end

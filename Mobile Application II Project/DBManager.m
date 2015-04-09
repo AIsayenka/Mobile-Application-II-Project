@@ -8,12 +8,12 @@
 
 #import "DBManager.h"
 #import <sqlite3.h>
-
 static DBManager* sharedInstance = nil;
 static sqlite3 *database = nil;
 static sqlite3_stmt *statement = nil;
 
 @implementation DBManager
+
 +(DBManager*)getSharedInstance{
     
     if (!sharedInstance) {
@@ -25,33 +25,27 @@ static sqlite3_stmt *statement = nil;
 }
 
 -(BOOL)createDB{
-
+    
     NSString* docDir;
     NSArray* dirPaths;
     
-    
     dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
-    
     docDir = dirPaths[0];
+    
     self.databasePath = [[NSString alloc]initWithString:[docDir stringByAppendingString:@"statements.db"]];
-    const char* dbpath = [self.databasePath UTF8String];
-
     BOOL isSuccess = YES;
-    
+    const char* dbp = [self.databasePath UTF8String];
     NSFileManager *filemgr = [NSFileManager defaultManager];
-    
     if ([filemgr fileExistsAtPath:self.databasePath]==NO) {
-        if (sqlite3_open(dbpath, &database)==SQLITE_OK) {
-            
-            char* errMsg;
-            char* sql_stmt = "create table if not exists statements(_id text primary key, actor text, verb text, object text)";
-            
-            if (sqlite3_exec(database, sql_stmt, NULL, NULL, &errMsg)!=SQLITE_OK) {
+        char* errMsg;
+        
+        if (sqlite3_open(dbp, &database)==SQLITE_OK) {
+            const char* stmt = "create table if not exists statements(_id text primary key, actor text, verb text, object text, lon text, lat text)";
+            if (sqlite3_exec(database, stmt, NULL, NULL, &errMsg)!=SQLITE_OK) {
                 isSuccess = NO;
                 NSLog(@"Failed to create table");
             }
             sqlite3_close(database);
-            
         }else{
             isSuccess = NO;
             NSLog(@"Failed to create database");
@@ -61,24 +55,32 @@ static sqlite3_stmt *statement = nil;
     return isSuccess;
     
 }
--(BOOL)saveData:(NSString*)_id actor:(NSString*)actor verb:(NSString*)verb object:(NSString*)object{
-
-    const char* path = [self.databasePath UTF8String];
+-(BOOL)saveData:(NSString*)_id actor:(NSString*)actor verb:(NSString*)verb object:(NSString*)object
+      longitude:(NSString*)lon latitude:(NSString*)lat{
+    NSString* docDir;
+    NSArray* dirPaths;
+    
+    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+    docDir = dirPaths[0];
+    
+    self.databasePath = [[NSString alloc]initWithString:[docDir stringByAppendingString:@"statements.db"]];
+    
+    const char* dbpath = [self.databasePath UTF8String];
     BOOL isSuccess = YES;
-    if (sqlite3_open(path, &database)==SQLITE_OK) {
+    if (sqlite3_open(dbpath, &database)==SQLITE_OK) {
         
-        NSString* insertSQL = [NSString stringWithFormat:@"insert into statements( _id, actor, verb, object) values (\"%@\", \"%@\", \"%@\", \"%@\")", _id, actor, verb, object];
+        NSString* insertSQL = [NSString stringWithFormat:@"insert into statements(_id, actor, verb, object, lon, lat) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\")",_id , actor, verb, object, lon, lat];
         
-        const char* s = [insertSQL UTF8String];
+        const char* sql_stmt = [insertSQL UTF8String];
         
-        if(sqlite3_prepare_v2(database, s, -1, &statement,NULL)==SQLITE_OK){
+        if(sqlite3_prepare_v2(database, sql_stmt, -1, &statement,NULL)==SQLITE_OK){
             if (sqlite3_step(statement)==SQLITE_DONE) {
                 isSuccess = YES;
             }else{
                 isSuccess = NO;
                 NSLog(@"Failed to execute query");
             }
-        
+            
         }else{
             isSuccess = NO;
             NSLog(@"Could not parse the query: %@\n", insertSQL);
@@ -88,10 +90,59 @@ static sqlite3_stmt *statement = nil;
         isSuccess=NO;
         NSLog(@"Failed to open database");
     }
-
+    
     sqlite3_reset(statement);
     sqlite3_close(database);
     return isSuccess;
+}
+-(NSMutableArray*)selectDistinct{
+    BOOL isSuccess = YES;
+    NSMutableArray* result = nil;
+    NSMutableArray* distinctResult = nil;
+    NSString* docDir;
+    NSArray* dirPaths;
+    
+    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+    docDir = dirPaths[0];
+    
+    self.databasePath = [[NSString alloc]initWithString:[docDir stringByAppendingString:@"statements.db"]];
+    
+    const char* dbpath = [self.databasePath UTF8String];
+    
+    if (sqlite3_open(dbpath, &database)==SQLITE_OK) {
+        
+        NSString* query = [NSString stringWithFormat:@"select * from statements"];
+        
+        const char* sql_stmt = [query UTF8String];
+        if (sqlite3_prepare_v2(database, sql_stmt, -1, &statement, NULL)==SQLITE_OK) {
+            if (sqlite3_step(statement)==SQLITE_ROW) {
+                distinctResult = [NSMutableArray new];
+                for(int i = 0; i< sqlite3_column_count(statement);i++)
+                {
+                    result = [NSMutableArray new];
+                    NSString* col = [[NSString alloc]
+                                     initWithUTF8String:(const char*)sqlite3_column_text(statement, i)];
+                    [result addObject:col];
+                }
+                [distinctResult addObject:result];
+            }else{
+                isSuccess=NO;
+                NSLog(@"Not found");
+            }
+        }else{
+            isSuccess=NO;
+            NSLog(@"Failed to parse query: %@", query);
+        }
+        
+        
+    }else{
+        isSuccess=NO;
+        NSLog(@"Failed to open database");
+    }
+    sqlite3_reset(statement);
+    sqlite3_close(database);
+    return distinctResult;
+    
 }
 
 -(NSArray*)findById:(NSString*)_id{
@@ -102,7 +153,7 @@ static sqlite3_stmt *statement = nil;
     
     if (sqlite3_open(dbpath, &database)==SQLITE_OK) {
         
-        NSString* query = [NSString stringWithFormat:@"select _id, verb, object from statements where _id=\"%@\"", _id];
+        NSString* query = [NSString stringWithFormat:@"select id, verb, object from statements where id=\"%@\"", _id];
         
         const char* sql_stmt = [query UTF8String];
         if (sqlite3_prepare_v2(database, sql_stmt, -1, &statement, NULL)==SQLITE_OK) {
