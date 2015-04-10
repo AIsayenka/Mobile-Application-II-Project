@@ -7,20 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F44394CD1AB3668800C1D4F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F44394CC1AB3668800C1D4F5 /* main.m */; };
 		F44394D01AB3668800C1D4F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F44394CF1AB3668800C1D4F5 /* AppDelegate.m */; };
 		F44394D31AB3668800C1D4F5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F44394D21AB3668800C1D4F5 /* ViewController.m */; };
 		F44394D81AB3668800C1D4F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44394D71AB3668800C1D4F5 /* Images.xcassets */; };
 		F44394E71AB3668800C1D4F5 /* Mobile_Application_II_ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F44394E61AB3668800C1D4F5 /* Mobile_Application_II_ProjectTests.m */; };
 		F467E5FB1AD1F6A700EA6C96 /* Statements.m in Sources */ = {isa = PBXBuildFile; fileRef = F467E5FA1AD1F6A700EA6C96 /* Statements.m */; };
 		F467E5FE1AD1F80900EA6C96 /* DisplayStatements.m in Sources */ = {isa = PBXBuildFile; fileRef = F467E5FD1AD1F80900EA6C96 /* DisplayStatements.m */; };
-		F467E6011AD1F87C00EA6C96 /* DownloadAndDisplayStatements.m in Sources */ = {isa = PBXBuildFile; fileRef = F467E6001AD1F87C00EA6C96 /* DownloadAndDisplayStatements.m */; };
 		F467E6051AD1FB2D00EA6C96 /* Statement.m in Sources */ = {isa = PBXBuildFile; fileRef = F467E6041AD1FB2D00EA6C96 /* Statement.m */; };
 		F48E64C31AD1BE25006E411C /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F48E64C21AD1BE25006E411C /* DBManager.m */; };
 		F4C547321AD7388A00500411 /* StatementsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C547311AD7388A00500411 /* StatementsTVC.m */; };
 		F4C547391AD73DBA00500411 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C547381AD73DBA00500411 /* libsqlite3.dylib */; };
 		F4C5473B1AD73DF000500411 /* arrayList.json in Resources */ = {isa = PBXBuildFile; fileRef = F4C5473A1AD73DF000500411 /* arrayList.json */; };
 		F4C5473D1AD73E2200500411 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C5473C1AD73E2200500411 /* MapKit.framework */; };
+		F4CDEF0D1AD776CA0093FDF4 /* StatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CDEF0C1AD776CA0093FDF4 /* StatementViewController.m */; };
+		F4CDEF131AD7844D0093FDF4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4CDEF121AD7844D0093FDF4 /* Info.plist */; };
+		F4CDEF151AD784840093FDF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CDEF141AD784840093FDF4 /* main.m */; };
+		F4D835C81AD787300084AC45 /* DownloadAndDisplayStatements.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D835C71AD787300084AC45 /* DownloadAndDisplayStatements.m */; };
+		F4D835CB1AD787930084AC45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D835C91AD787930084AC45 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +50,6 @@
 
 /* Begin PBXFileReference section */
 		F44394C71AB3668800C1D4F5 /* Mobile Application II Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile Application II Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F44394CB1AB3668800C1D4F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F44394CC1AB3668800C1D4F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F44394CE1AB3668800C1D4F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F44394CF1AB3668800C1D4F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F44394D11AB3668800C1D4F5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -63,8 +64,6 @@
 		F467E5FA1AD1F6A700EA6C96 /* Statements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statements.m; sourceTree = "<group>"; };
 		F467E5FC1AD1F80900EA6C96 /* DisplayStatements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayStatements.h; sourceTree = "<group>"; };
 		F467E5FD1AD1F80900EA6C96 /* DisplayStatements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayStatements.m; sourceTree = "<group>"; };
-		F467E5FF1AD1F87C00EA6C96 /* DownloadAndDisplayStatements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadAndDisplayStatements.h; path = ../DownloadAndDisplayStatements.h; sourceTree = "<group>"; };
-		F467E6001AD1F87C00EA6C96 /* DownloadAndDisplayStatements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadAndDisplayStatements.m; path = ../DownloadAndDisplayStatements.m; sourceTree = "<group>"; };
 		F467E6031AD1FB2D00EA6C96 /* Statement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statement.h; sourceTree = "<group>"; };
 		F467E6041AD1FB2D00EA6C96 /* Statement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statement.m; sourceTree = "<group>"; };
 		F48E64C11AD1BE25006E411C /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
@@ -74,6 +73,13 @@
 		F4C547381AD73DBA00500411 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		F4C5473A1AD73DF000500411 /* arrayList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = arrayList.json; path = "../Mobile-Application-II-Project-Gipps/arrayList.json"; sourceTree = "<group>"; };
 		F4C5473C1AD73E2200500411 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F4CDEF0B1AD776CA0093FDF4 /* StatementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatementViewController.h; sourceTree = "<group>"; };
+		F4CDEF0C1AD776CA0093FDF4 /* StatementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatementViewController.m; sourceTree = "<group>"; };
+		F4CDEF121AD7844D0093FDF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4CDEF141AD784840093FDF4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F4D835C61AD787300084AC45 /* DownloadAndDisplayStatements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadAndDisplayStatements.h; sourceTree = "<group>"; };
+		F4D835C71AD787300084AC45 /* DownloadAndDisplayStatements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadAndDisplayStatements.m; sourceTree = "<group>"; };
+		F4D835CA1AD787930084AC45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Mobile Application II Project/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 		F44394BE1AB3668800C1D4F5 = {
 			isa = PBXGroup;
 			children = (
+				F4D835C91AD787930084AC45 /* Main.storyboard */,
 				F4C5473C1AD73E2200500411 /* MapKit.framework */,
 				F4C5473A1AD73DF000500411 /* arrayList.json */,
 				F4C547381AD73DBA00500411 /* libsqlite3.dylib */,
@@ -138,8 +145,8 @@
 		F44394CA1AB3668800C1D4F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F44394CB1AB3668800C1D4F5 /* Info.plist */,
-				F44394CC1AB3668800C1D4F5 /* main.m */,
+				F4CDEF141AD784840093FDF4 /* main.m */,
+				F4CDEF121AD7844D0093FDF4 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -172,8 +179,10 @@
 				F467E5FA1AD1F6A700EA6C96 /* Statements.m */,
 				F467E5FC1AD1F80900EA6C96 /* DisplayStatements.h */,
 				F467E5FD1AD1F80900EA6C96 /* DisplayStatements.m */,
-				F467E5FF1AD1F87C00EA6C96 /* DownloadAndDisplayStatements.h */,
-				F467E6001AD1F87C00EA6C96 /* DownloadAndDisplayStatements.m */,
+				F4D835C61AD787300084AC45 /* DownloadAndDisplayStatements.h */,
+				F4D835C71AD787300084AC45 /* DownloadAndDisplayStatements.m */,
+				F4CDEF0B1AD776CA0093FDF4 /* StatementViewController.h */,
+				F4CDEF0C1AD776CA0093FDF4 /* StatementViewController.m */,
 			);
 			name = Statements;
 			sourceTree = "<group>";
@@ -297,8 +306,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D835CB1AD787930084AC45 /* Main.storyboard in Resources */,
 				F44394D81AB3668800C1D4F5 /* Images.xcassets in Resources */,
 				F4C5473B1AD73DF000500411 /* arrayList.json in Resources */,
+				F4CDEF131AD7844D0093FDF4 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,14 +327,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D835C81AD787300084AC45 /* DownloadAndDisplayStatements.m in Sources */,
+				F4CDEF151AD784840093FDF4 /* main.m in Sources */,
 				F44394D31AB3668800C1D4F5 /* ViewController.m in Sources */,
 				F44394D01AB3668800C1D4F5 /* AppDelegate.m in Sources */,
 				F467E5FE1AD1F80900EA6C96 /* DisplayStatements.m in Sources */,
 				F467E6051AD1FB2D00EA6C96 /* Statement.m in Sources */,
-				F44394CD1AB3668800C1D4F5 /* main.m in Sources */,
-				F467E6011AD1F87C00EA6C96 /* DownloadAndDisplayStatements.m in Sources */,
 				F4C547321AD7388A00500411 /* StatementsTVC.m in Sources */,
 				F48E64C31AD1BE25006E411C /* DBManager.m in Sources */,
+				F4CDEF0D1AD776CA0093FDF4 /* StatementViewController.m in Sources */,
 				F467E5FB1AD1F6A700EA6C96 /* Statements.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +373,14 @@
 				F44394DA1AB3668800C1D4F5 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		F4D835C91AD787930084AC45 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4D835CA1AD787930084AC45 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

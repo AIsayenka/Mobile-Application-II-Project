@@ -42,7 +42,7 @@ static sqlite3_stmt *statement = nil;
         char* errMsg;
         
         if (sqlite3_open(dbp, &database)==SQLITE_OK) {
-            const char* stmt = "create table if not exists statements(_sid integer primary key autoincrement,_id text, actor text, verb text, object text, lon integer, lat integer)";
+            const char* stmt = "create table if not exists statements(_sid integer primary key autoincrement,_id text, actor text, verb text, object text, lon float, lat float)";
             if (sqlite3_exec(database, stmt, NULL, NULL, &errMsg)!=SQLITE_OK) {
                 isSuccess = NO;
                 NSLog(@"Failed to create table");
@@ -61,7 +61,8 @@ static sqlite3_stmt *statement = nil;
       longitude:(NSString*)lon latitude:(NSString*)lat{
     NSString* docDir;
     NSArray* dirPaths;
-    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
     dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
     docDir = dirPaths[0];
     
@@ -71,7 +72,7 @@ static sqlite3_stmt *statement = nil;
     BOOL isSuccess = YES;
     if (sqlite3_open(dbpath, &database)==SQLITE_OK) {
         
-        NSString* insertSQL = [NSString stringWithFormat:@"insert into statements(_id, actor, verb, object, lon, lat) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%d\", \"%d\")",_id , actor, verb, object, [lon intValue], [lat intValue]];
+        NSString* insertSQL = [NSString stringWithFormat:@"insert into statements(_id, actor, verb, object, lon, lat) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\")",_id , actor, verb, object, [numberFormatter numberFromString:lat], [numberFormatter numberFromString:lon]];
         
         const char* sql_stmt = [insertSQL UTF8String];
         

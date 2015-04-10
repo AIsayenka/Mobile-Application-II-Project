@@ -8,6 +8,7 @@
 
 #import "StatementsTVC.h"
 #import "DBManager.h"
+#import "StatementViewController.h"
 
 @interface StatementsTVC ()
 
@@ -15,14 +16,13 @@
 
 @implementation StatementsTVC
 
-Statements *s;
 DBManager *dbm;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Statements";
     // Uncomment the following line to preserve selection between presentations.
-    self.clearsSelectionOnViewWillAppear = NO;
+    //self.clearsSelectionOnViewWillAppear = YES;
     
     dbm = [DBManager new];
     _list = [dbm selectDistinct];
@@ -51,13 +51,19 @@ DBManager *dbm;
     return cell;
 }
 
-
-#pragma mark - Navigation
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    self.desc = [[_list objectAtIndex:[indexPath row]] description];
+    
+    // Perform Segue
+    [self performSegueWithIdentifier:@"Statement" sender:self];
+}
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.destinationViewController isKindOfClass:[StatementViewController class]]) {
+        [(StatementViewController*)segue.destinationViewController setDesc:self.desc];
+    }
 }
 
 

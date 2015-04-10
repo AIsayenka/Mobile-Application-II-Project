@@ -14,4 +14,5 @@
 @property (strong, nonatomic)NSArray *list;
 @property (strong, nonatomic)NSArray *statement;
 @property (strong, nonatomic)Statements *s;
+@property (strong, nonatomic)NSString *desc;
 @end
