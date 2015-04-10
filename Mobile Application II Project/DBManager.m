@@ -72,8 +72,8 @@ static sqlite3_stmt *statement = nil;
     BOOL isSuccess = YES;
     if (sqlite3_open(dbpath, &database)==SQLITE_OK) {
         
-        NSString* insertSQL = [NSString stringWithFormat:@"insert into statements(_id, actor, verb, object, lon, lat) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\")",_id , actor, verb, object, [numberFormatter numberFromString:lat], [numberFormatter numberFromString:lon]];
-        
+        NSString* insertSQL = [NSString stringWithFormat:@"insert into statements(_id, actor, verb, object, lon, lat) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%f\", \"%f\")",_id , actor, verb, object, [lat floatValue], [lon floatValue]];
+        NSLog(@"Float values: %f %f",[lat floatValue], [lon floatValue] );
         const char* sql_stmt = [insertSQL UTF8String];
         
         if(sqlite3_prepare_v2(database, sql_stmt, -1, &statement,NULL)==SQLITE_OK){
@@ -117,7 +117,7 @@ static sqlite3_stmt *statement = nil;
     rows = [NSMutableArray new];
     if (sqlite3_open(dbpath, &database)==SQLITE_OK) {
         for(y = 1; y < 21; y++){
-        query = [NSString stringWithFormat:@"select _id, actor, verb, object, lon, lat from statements where _sid=\"%d\"", y];
+        query = [NSString stringWithFormat:@"select _sid, _id, actor, verb, object, lon, lat from statements where _sid=\"%d\"", y];
         const char* sql_stmt = [query UTF8String];
         if (sqlite3_prepare_v2(database, sql_stmt, -1, &statement, NULL)==SQLITE_OK) {
             if (sqlite3_step(statement)==SQLITE_ROW) {
@@ -149,29 +149,39 @@ static sqlite3_stmt *statement = nil;
     
 }
 
--(NSArray*)findById:(NSString*)_id{
+-(NSArray*)findById:(NSString*)_sid{
     BOOL isSuccess = YES;
     NSMutableArray* result = nil;
+    NSString* docDir;
+    NSArray* dirPaths;
+    
+    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+    docDir = dirPaths[0];
+    
+    self.databasePath = [[NSString alloc]initWithString:[docDir stringByAppendingString:@"statements.db"]];
     
     const char* dbpath = [self.databasePath UTF8String];
     
     if (sqlite3_open(dbpath, &database)==SQLITE_OK) {
         
-        NSString* query = [NSString stringWithFormat:@"select id, verb, object from statements where id=\"%@\"", _id];
+        NSString* query = [NSString stringWithFormat:@"select _id, actor, verb, object, lat, lon from statements where _sid=\"%d\"", [_sid integerValue]];
         
         const char* sql_stmt = [query UTF8String];
         if (sqlite3_prepare_v2(database, sql_stmt, -1, &statement, NULL)==SQLITE_OK) {
             if (sqlite3_step(statement)==SQLITE_ROW) {
-                
                 result = [NSMutableArray new];
-                NSString* actor = [[NSString alloc]initWithUTF8String:(const char*)sqlite3_column_text(statement, 0)];
-                NSString* verb = [[NSString alloc]initWithUTF8String:(const char*)sqlite3_column_text(statement, 1)];
-                NSString* object = [[NSString alloc]initWithUTF8String:(const char*)sqlite3_column_text(statement, 2)];
-                
+                NSString* _id = [[NSString alloc]initWithUTF8String:(const char*)sqlite3_column_text(statement, 0)];
+                NSString* actor = [[NSString alloc]initWithUTF8String:(const char*)sqlite3_column_text(statement, 1)];
+                NSString* verb = [[NSString alloc]initWithUTF8String:(const char*)sqlite3_column_text(statement, 2)];
+                NSString* object = [[NSString alloc]initWithUTF8String:(const char*)sqlite3_column_text(statement, 3)];
+                NSString* lat = [[NSString alloc]initWithUTF8String:(const char*)sqlite3_column_text(statement, 4)];
+                NSString* lon = [[NSString alloc]initWithUTF8String:(const char*)sqlite3_column_text(statement, 5)];
+                [result addObject:_id];
                 [result addObject:actor];
                 [result addObject:verb];
                 [result addObject:object];
-                
+                [result addObject:lat];
+                [result addObject:lon];
             }else{
                 isSuccess=NO;
                 NSLog(@"Not found");

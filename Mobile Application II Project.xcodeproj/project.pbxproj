@@ -17,13 +17,13 @@
 		F48E64C31AD1BE25006E411C /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F48E64C21AD1BE25006E411C /* DBManager.m */; };
 		F4C547321AD7388A00500411 /* StatementsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C547311AD7388A00500411 /* StatementsTVC.m */; };
 		F4C547391AD73DBA00500411 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C547381AD73DBA00500411 /* libsqlite3.dylib */; };
-		F4C5473B1AD73DF000500411 /* arrayList.json in Resources */ = {isa = PBXBuildFile; fileRef = F4C5473A1AD73DF000500411 /* arrayList.json */; };
 		F4C5473D1AD73E2200500411 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C5473C1AD73E2200500411 /* MapKit.framework */; };
+		F4C94F351AD8699B007B6E52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C94F331AD8699B007B6E52 /* Main.storyboard */; };
 		F4CDEF0D1AD776CA0093FDF4 /* StatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CDEF0C1AD776CA0093FDF4 /* StatementViewController.m */; };
 		F4CDEF131AD7844D0093FDF4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4CDEF121AD7844D0093FDF4 /* Info.plist */; };
 		F4CDEF151AD784840093FDF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CDEF141AD784840093FDF4 /* main.m */; };
+		F4D595EE1AD8671400C4C088 /* arrayList.json in Resources */ = {isa = PBXBuildFile; fileRef = F4D595ED1AD8671400C4C088 /* arrayList.json */; };
 		F4D835C81AD787300084AC45 /* DownloadAndDisplayStatements.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D835C71AD787300084AC45 /* DownloadAndDisplayStatements.m */; };
-		F4D835CB1AD787930084AC45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D835C91AD787930084AC45 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,6 @@
 		F44394CF1AB3668800C1D4F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F44394D11AB3668800C1D4F5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		F44394D21AB3668800C1D4F5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		F44394D51AB3668800C1D4F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F44394D71AB3668800C1D4F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F44394DA1AB3668800C1D4F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F44394E01AB3668800C1D4F5 /* Mobile Application II ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mobile Application II ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,15 +70,15 @@
 		F4C547301AD7388A00500411 /* StatementsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatementsTVC.h; sourceTree = "<group>"; };
 		F4C547311AD7388A00500411 /* StatementsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatementsTVC.m; sourceTree = "<group>"; };
 		F4C547381AD73DBA00500411 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		F4C5473A1AD73DF000500411 /* arrayList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = arrayList.json; path = "../Mobile-Application-II-Project-Gipps/arrayList.json"; sourceTree = "<group>"; };
 		F4C5473C1AD73E2200500411 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F4C94F341AD8699B007B6E52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Mobile Application II Project/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		F4CDEF0B1AD776CA0093FDF4 /* StatementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatementViewController.h; sourceTree = "<group>"; };
 		F4CDEF0C1AD776CA0093FDF4 /* StatementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatementViewController.m; sourceTree = "<group>"; };
 		F4CDEF121AD7844D0093FDF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4CDEF141AD784840093FDF4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F4D595ED1AD8671400C4C088 /* arrayList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = arrayList.json; sourceTree = "<group>"; };
 		F4D835C61AD787300084AC45 /* DownloadAndDisplayStatements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadAndDisplayStatements.h; sourceTree = "<group>"; };
 		F4D835C71AD787300084AC45 /* DownloadAndDisplayStatements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadAndDisplayStatements.m; sourceTree = "<group>"; };
-		F4D835CA1AD787930084AC45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Mobile Application II Project/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +104,8 @@
 		F44394BE1AB3668800C1D4F5 = {
 			isa = PBXGroup;
 			children = (
-				F4D835C91AD787930084AC45 /* Main.storyboard */,
+				F4D595ED1AD8671400C4C088 /* arrayList.json */,
 				F4C5473C1AD73E2200500411 /* MapKit.framework */,
-				F4C5473A1AD73DF000500411 /* arrayList.json */,
 				F4C547381AD73DBA00500411 /* libsqlite3.dylib */,
 				F44394C91AB3668800C1D4F5 /* Mobile Application II Project */,
 				F44394E31AB3668800C1D4F5 /* Mobile Application II ProjectTests */,
@@ -129,9 +127,9 @@
 			children = (
 				F44394CE1AB3668800C1D4F5 /* AppDelegate.h */,
 				F44394CF1AB3668800C1D4F5 /* AppDelegate.m */,
+				F4C94F331AD8699B007B6E52 /* Main.storyboard */,
 				F44394D11AB3668800C1D4F5 /* ViewController.h */,
 				F44394D21AB3668800C1D4F5 /* ViewController.m */,
-				F44394D41AB3668800C1D4F5 /* Main.storyboard */,
 				F48E64C11AD1BE25006E411C /* DBManager.h */,
 				F48E64C21AD1BE25006E411C /* DBManager.m */,
 				F44394D71AB3668800C1D4F5 /* Images.xcassets */,
@@ -306,10 +304,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4D835CB1AD787930084AC45 /* Main.storyboard in Resources */,
+				F4D595EE1AD8671400C4C088 /* arrayList.json in Resources */,
 				F44394D81AB3668800C1D4F5 /* Images.xcassets in Resources */,
-				F4C5473B1AD73DF000500411 /* arrayList.json in Resources */,
 				F4CDEF131AD7844D0093FDF4 /* Info.plist in Resources */,
+				F4C94F351AD8699B007B6E52 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,14 +357,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F44394D41AB3668800C1D4F5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F44394D51AB3668800C1D4F5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F44394D91AB3668800C1D4F5 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -375,12 +365,13 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
-		F4D835C91AD787930084AC45 /* Main.storyboard */ = {
+		F4C94F331AD8699B007B6E52 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F4D835CA1AD787930084AC45 /* Base */,
+				F4C94F341AD8699B007B6E52 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

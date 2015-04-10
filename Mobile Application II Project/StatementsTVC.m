@@ -24,8 +24,7 @@ DBManager *dbm;
     // Uncomment the following line to preserve selection between presentations.
     //self.clearsSelectionOnViewWillAppear = YES;
     
-    dbm = [DBManager new];
-    _list = [dbm selectDistinct];
+   
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
@@ -35,6 +34,8 @@ DBManager *dbm;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
+    dbm = [DBManager new];
+    _list = [dbm selectDistinct];
     return [_list count];
 }
 
@@ -46,14 +47,14 @@ DBManager *dbm;
     // Configure the cell...
     
     self.statement = [self.list objectAtIndex:[indexPath row]];
-    [cell.textLabel setText:[self.statement objectAtIndex:0]];
+    [cell.textLabel setText:[self.statement objectAtIndex:1]];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    self.desc = [[_list objectAtIndex:[indexPath row]] description];
+    self.desc = [[_list objectAtIndex:[indexPath row]] objectAtIndex:0];
     
     // Perform Segue
     [self performSegueWithIdentifier:@"Statement" sender:self];

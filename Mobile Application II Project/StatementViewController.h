@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
+
 @interface StatementViewController : UIViewController<UITextViewDelegate>
+
 @property (strong, nonatomic) NSString *desc;
 @property(weak, nonatomic) IBOutlet MKMapView *mapview;
+@property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UILabel *lblVerb;
+@property (weak, nonatomic) IBOutlet UILabel *lblLocation;
+
 @end

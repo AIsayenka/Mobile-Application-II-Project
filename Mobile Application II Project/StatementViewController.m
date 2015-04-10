@@ -8,6 +8,7 @@
 
 #import "StatementViewController.h"
 #define METERS_PER_MILE 1609.344
+#import "DBManager.h"
 
 @interface StatementViewController ()
 
@@ -15,29 +16,46 @@
 
 @implementation StatementViewController
 
+DBManager *dbm;
+
+NSArray *temp;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    // Do any additional setup after loading the view.
-    UITextView *myUITextView = [[UITextView alloc] init];
-    myUITextView.delegate = self;
-//    myUITextView.text = self.desc;
-//    [self setView:myUITextView];
-    [myUITextView setText:_desc];
-    myUITextView.textColor = [UIColor blueColor];
-    myUITextView.backgroundColor = [UIColor lightGrayColor];
+    if (self.desc) {
+        temp = [[NSArray alloc] init];
+        dbm = [DBManager new];
+        temp = [dbm findById:_desc];
+        
+        NSString *lStr = [NSString stringWithFormat:@"%f %f", [[temp objectAtIndex:4] floatValue], [[temp objectAtIndex:5] floatValue]];
+        _lblName.text = [temp objectAtIndex:0];
+        _lblVerb.text = [temp objectAtIndex:1];
+        _lblLocation.text = lStr;
+        
+        CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake([[temp objectAtIndex:4] floatValue], [[temp objectAtIndex:5] floatValue]);
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        [annotation setCoordinate:centerCoordinate];
+        [annotation setTitle:lStr]; //You can set the subtitle too
+        [self.mapview addAnnotation:annotation];
+    }
+   
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     // 1
     CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = 39.281516;
-    zoomLocation.longitude= -76.580806;
+//    zoomLocation.latitude = 39.281516;
+//    zoomLocation.longitude= -76.580806;
+    zoomLocation.latitude = [[temp objectAtIndex:4] doubleValue];
+    zoomLocation.longitude= [[temp objectAtIndex:5] doubleValue];
     
     // 2
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 2000*METERS_PER_MILE, 2000*METERS_PER_MILE);
     
     // 3
     [_mapview setRegion:viewRegion animated:YES];
+    
+   
 }
 /*
 #pragma mark - Navigation
