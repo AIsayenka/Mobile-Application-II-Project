@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textLink;
 @property (weak, nonatomic) IBOutlet UITextField *textEmail;
 @property (weak, nonatomic) IBOutlet UITextField *textPasswd;
+@property (weak, nonatomic) IBOutlet UILabel *staticTitle;
 @end
 
 
@@ -36,7 +37,8 @@ DBManager *dbm;
     // Do any additional setup after loading the view, typically from a nib.
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
+    _staticTitle.font = [UIFont fontWithName:@"Zapfino" size:21.0f];
+    _staticTitle.textAlignment = NSTextAlignmentCenter;
     _textPasswd.secureTextEntry = YES;
     
     NSError *err = nil;

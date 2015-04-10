@@ -26,17 +26,25 @@ NSArray *temp;
         temp = [[NSArray alloc] init];
         dbm = [DBManager new];
         temp = [dbm findById:_desc];
-        
+        _staticIdlbl.font = [UIFont boldSystemFontOfSize:16.0f];
+        _staticLblName.font = [UIFont boldSystemFontOfSize:16.0f];
+        _staticCoordsLbl.font = [UIFont boldSystemFontOfSize:16.0f];
         NSString *lStr = [NSString stringWithFormat:@"%f %f", [[temp objectAtIndex:4] floatValue], [[temp objectAtIndex:5] floatValue]];
-        _lblName.text = [temp objectAtIndex:0];
-        _lblVerb.text = [temp objectAtIndex:1];
+        _lblId.text = [temp objectAtIndex:0];
+        _lblId.font = [UIFont italicSystemFontOfSize:12.0f];
+        _lblName.text = [temp objectAtIndex:1];
+        _lblName.font = [UIFont italicSystemFontOfSize:12.0f];
         _lblLocation.text = lStr;
+        _lblLocation.font = [UIFont boldSystemFontOfSize:12.0f];
+
         
         CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake([[temp objectAtIndex:4] floatValue], [[temp objectAtIndex:5] floatValue]);
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
         [annotation setCoordinate:centerCoordinate];
         [annotation setTitle:lStr]; //You can set the subtitle too
         [self.mapview addAnnotation:annotation];
+    }else{
+        [super viewDidDisappear:YES];
     }
    
 }

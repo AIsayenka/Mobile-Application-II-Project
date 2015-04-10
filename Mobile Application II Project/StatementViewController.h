@@ -14,8 +14,11 @@
 
 @property (strong, nonatomic) NSString *desc;
 @property(weak, nonatomic) IBOutlet MKMapView *mapview;
+@property (weak, nonatomic) IBOutlet UILabel *lblId;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
-@property (weak, nonatomic) IBOutlet UILabel *lblVerb;
 @property (weak, nonatomic) IBOutlet UILabel *lblLocation;
+@property (weak, nonatomic) IBOutlet UILabel *staticIdlbl;
+@property (weak, nonatomic) IBOutlet UILabel *staticLblName;
+@property (weak, nonatomic) IBOutlet UILabel *staticCoordsLbl;
 
 @end
