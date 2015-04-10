@@ -8,6 +8,8 @@
 
 #import "DBManager.h"
 #import <sqlite3.h>
+
+
 static DBManager* sharedInstance = nil;
 static sqlite3 *database = nil;
 static sqlite3_stmt *statement = nil;
@@ -40,7 +42,7 @@ static sqlite3_stmt *statement = nil;
         char* errMsg;
         
         if (sqlite3_open(dbp, &database)==SQLITE_OK) {
-            const char* stmt = "create table if not exists statements(_id text primary key, actor text, verb text, object text, lon text, lat text)";
+            const char* stmt = "create table if not exists statements(_sid integer primary key autoincrement,_id text, actor text, verb text, object text, lon integer, lat integer)";
             if (sqlite3_exec(database, stmt, NULL, NULL, &errMsg)!=SQLITE_OK) {
                 isSuccess = NO;
                 NSLog(@"Failed to create table");
@@ -69,7 +71,7 @@ static sqlite3_stmt *statement = nil;
     BOOL isSuccess = YES;
     if (sqlite3_open(dbpath, &database)==SQLITE_OK) {
         
-        NSString* insertSQL = [NSString stringWithFormat:@"insert into statements(_id, actor, verb, object, lon, lat) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\")",_id , actor, verb, object, lon, lat];
+        NSString* insertSQL = [NSString stringWithFormat:@"insert into statements(_id, actor, verb, object, lon, lat) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%d\", \"%d\")",_id , actor, verb, object, [lon intValue], [lat intValue]];
         
         const char* sql_stmt = [insertSQL UTF8String];
         
@@ -97,34 +99,34 @@ static sqlite3_stmt *statement = nil;
 }
 -(NSMutableArray*)selectDistinct{
     BOOL isSuccess = YES;
-    NSMutableArray* result = nil;
-    NSMutableArray* distinctResult = nil;
+    NSMutableArray* columns = nil;
+    NSMutableArray* rows = nil;
+    NSMutableArray* temp = nil;
     NSString* docDir;
     NSArray* dirPaths;
+    int y;
+    
+    temp = _s.statements;
     
     dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
     docDir = dirPaths[0];
-    
     self.databasePath = [[NSString alloc]initWithString:[docDir stringByAppendingString:@"statements.db"]];
-    
     const char* dbpath = [self.databasePath UTF8String];
-    
+    NSString* query;
+    rows = [NSMutableArray new];
     if (sqlite3_open(dbpath, &database)==SQLITE_OK) {
-        
-        NSString* query = [NSString stringWithFormat:@"select * from statements"];
-        
+        for(y = 1; y < 21; y++){
+        query = [NSString stringWithFormat:@"select _id, actor, verb, object, lon, lat from statements where _sid=\"%d\"", y];
         const char* sql_stmt = [query UTF8String];
         if (sqlite3_prepare_v2(database, sql_stmt, -1, &statement, NULL)==SQLITE_OK) {
             if (sqlite3_step(statement)==SQLITE_ROW) {
-                distinctResult = [NSMutableArray new];
+                columns = [NSMutableArray new];
                 for(int i = 0; i< sqlite3_column_count(statement);i++)
                 {
-                    result = [NSMutableArray new];
                     NSString* col = [[NSString alloc]
                                      initWithUTF8String:(const char*)sqlite3_column_text(statement, i)];
-                    [result addObject:col];
+                    [columns addObject:col];
                 }
-                [distinctResult addObject:result];
             }else{
                 isSuccess=NO;
                 NSLog(@"Not found");
@@ -133,15 +135,16 @@ static sqlite3_stmt *statement = nil;
             isSuccess=NO;
             NSLog(@"Failed to parse query: %@", query);
         }
-        
-        
+            [rows addObject:columns];
+//            NSLog(@"Row updated ");
+        }
     }else{
         isSuccess=NO;
         NSLog(@"Failed to open database");
     }
     sqlite3_reset(statement);
     sqlite3_close(database);
-    return distinctResult;
+    return rows;
     
 }
 

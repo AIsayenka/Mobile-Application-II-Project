@@ -14,4 +14,7 @@
 
 @property (strong, nonatomic)NSMutableArray* statements;
 
+-(void)setStatements:(NSMutableArray *)statements;
+-(NSMutableArray*)getStatements;
+
 @end

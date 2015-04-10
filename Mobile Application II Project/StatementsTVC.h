@@ -10,6 +10,8 @@
 #import "Statements.h"
 
 @interface StatementsTVC :  UITableViewController<UITableViewDelegate, UITableViewDataSource>
+
 @property (strong, nonatomic)NSArray *list;
 @property (strong, nonatomic)NSArray *statement;
+@property (strong, nonatomic)Statements *s;
 @end

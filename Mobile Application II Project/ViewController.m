@@ -22,6 +22,7 @@
 
 @implementation ViewController
 
+DBManager *dbm;
 
 - (IBAction)btnDisplay:(id)sender {
 }
@@ -47,48 +48,47 @@
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath] options:kNilOptions error:&err];
     
     NSArray* statements = [json objectForKey:@"statements"];
-    Statements* stmnts = [Statements new];
-    DBManager* dbm = [DBManager new];
-    Statement* s;
-    stmnts.statements = [[NSMutableArray alloc] init];
+    _stmnts = [Statements new];
+    dbm = [DBManager new];
     
+    _stmnts.statements = [[NSMutableArray alloc] init];
+    NSMutableArray* temp = [[NSMutableArray alloc] init];
     if([dbm createDB]){
         NSLog(@"Db OK");
     }
     
-    
     for (int i = 0; i < statements.count; i++) {
         NSDictionary* statement = [statements objectAtIndex:i];
-        s = [Statement new];
+        _s = [Statement new];
         for(NSString *key in [statement allKeys]){
             if([key isEqualToString:@"id"]){
-                s._id = [statement objectForKey:key];
+                _s._id = [statement objectForKey:key];
             }else if ([key isEqualToString:@"authority"]){
-                s.actor = [[statement objectForKey:@"authority"] objectForKey:@"name"];
+                _s.actor = [[statement objectForKey:@"authority"] objectForKey:@"name"];
             }else if ([key isEqualToString:@"verb"]){
-                s.verb = [[[statement objectForKey:@"verb"] objectForKey:@"display"] objectForKey:@"en-US"];
+                _s.verb = [[[statement objectForKey:@"verb"] objectForKey:@"display"] objectForKey:@"en-US"];
             }else if ([key isEqualToString:@"object"]){
-                s.object = [[[[statement objectForKey:@"object"] objectForKey:@"definition"] objectForKey:@"description"] objectForKey:@"en-US"];
+                _s.object = [[[[statement objectForKey:@"object"] objectForKey:@"definition"] objectForKey:@"description"] objectForKey:@"en-US"];
             }else if ([key isEqualToString:@"location"]){
-                s.longitude = [[statement objectForKey:@"location"] objectForKey:@"longitude"];
-                s.latitude = [[statement objectForKey:@"location"] objectForKey:@"latitude"];
+                _s.longitude = [[statement objectForKey:@"location"] objectForKey:@"longitude"];
+                _s.latitude = [[statement objectForKey:@"location"] objectForKey:@"latitude"];
             }
         }
-        [stmnts.statements addObject:s];
+        [temp addObject:_s];
         // NSLog(@"Statement list: %@", statement);
-        NSLog(@"Id: %@", s._id);
-        NSLog(@"Actor: %@", s.actor);
-        NSLog(@"Verb: %@", s.verb);
-        NSLog(@"Object: %@", s.object);
-        NSLog(@"Longitude: %@", s.longitude);
-        NSLog(@"Latitude: %@", s.latitude);
-        if ([dbm saveData:s._id actor:s.actor verb:s.verb object:s.object longitude:s.longitude
-                 latitude:s.latitude]){
+        NSLog(@"Id: %@", _s._id);
+        NSLog(@"Actor: %@", _s.actor);
+        NSLog(@"Verb: %@", _s.verb);
+        NSLog(@"Object: %@", _s.object);
+        NSLog(@"Longitude: %@", _s.longitude);
+        NSLog(@"Latitude: %@", _s.latitude);
+        if ([dbm saveData:_s._id actor:_s.actor verb:_s.verb object:_s.object longitude:_s.longitude
+                 latitude:_s.latitude]){
             NSLog(@"Db save success");
         }
         
     }
-    
+    [_stmnts setStatements:temp];
 }
 
 - (void)didReceiveMemoryWarning {
