@@ -17,4 +17,11 @@
     }
     return self;
 }
+
+-(void)setStatements:(NSMutableArray *)statements{
+    _statements = statements;
+}
+-(NSMutableArray*)getStatements{
+    return _statements;
+}
 @end

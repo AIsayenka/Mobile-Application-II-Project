@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "Statement.h"
+#import "DisplayStatements.h"
 
 @interface Statements : NSObject
 
-@property (strong, nonatomic)NSArray* statements;
+@property (strong, nonatomic)NSMutableArray* statements;
+
+-(void)setStatements:(NSMutableArray *)statements;
+-(NSMutableArray*)getStatements;
 
 @end

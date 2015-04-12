@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DisplayStatements.h"
+#import "DBManager.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController 
+
+@property(strong, nonatomic) Statement* s;
+@property(strong, nonatomic) Statements* stmnts;
 @end
 

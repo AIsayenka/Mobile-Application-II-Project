@@ -7,7 +7,14 @@
 //
 
 #import "DisplayStatements.h"
+#import "Statement.h"
+#import "Statements.h"
+#import "DBManager.h"
 
-@implementation Statements(DisplayStatements)
+@implementation DisplayStatements
+
+-(void)loadJSON{
+   
+}
 
 @end

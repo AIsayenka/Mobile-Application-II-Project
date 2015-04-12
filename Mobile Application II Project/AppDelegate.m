@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import <GoogleMaps/GMSMapView.h>
 
 @interface AppDelegate ()
 
@@ -17,8 +18,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+<<<<<<< Updated upstream
+    // Override point for customization after application launch.   
+=======
     // Override point for customization after application launch.
-    [GMSServices provideAPIKey:@"AIzaSyAEjnKLUY0B6bOQYYt0j10eSf2ZQSUvZlI"];
+    [GMSServices provideAPIKey:@"AIzaSyAAEq82qlwH4ar5oguutHQ7MshMxI7Qtzo"];
+>>>>>>> Stashed changes
     return YES;
 }
 

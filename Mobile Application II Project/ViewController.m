@@ -16,12 +16,14 @@
 @property (weak, nonatomic) IBOutlet UITextField *textLink;
 @property (weak, nonatomic) IBOutlet UITextField *textEmail;
 @property (weak, nonatomic) IBOutlet UITextField *textPasswd;
+@property (weak, nonatomic) IBOutlet UILabel *staticTitle;
 @end
 
 
 
 @implementation ViewController
 
+DBManager *dbm;
 
 - (IBAction)btnDisplay:(id)sender {
 }
@@ -33,9 +35,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-   
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    _staticTitle.font = [UIFont fontWithName:@"Zapfino" size:21.0f];
+    _staticTitle.textAlignment = NSTextAlignmentCenter;
     _textPasswd.secureTextEntry = YES;
     
     NSError *err = nil;
@@ -47,42 +50,47 @@
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath] options:kNilOptions error:&err];
     
     NSArray* statements = [json objectForKey:@"statements"];
-    Statement* s = [Statement new];
-    Statements* stmnts = [Statements new];
-    DBManager* dbm = [DBManager new];
+    _stmnts = [Statements new];
+    dbm = [DBManager new];
     
-    stmnts.statements = [[NSArray alloc] init];
+    _stmnts.statements = [[NSMutableArray alloc] init];
+    NSMutableArray* temp = [[NSMutableArray alloc] init];
+    if([dbm createDB]){
+        NSLog(@"Db OK");
+    }
     
     for (int i = 0; i < statements.count; i++) {
         NSDictionary* statement = [statements objectAtIndex:i];
-        
+        _s = [Statement new];
         for(NSString *key in [statement allKeys]){
             if([key isEqualToString:@"id"]){
-                s.iD = [statement objectForKey:key];
+                _s._id = [statement objectForKey:key];
             }else if ([key isEqualToString:@"authority"]){
-                s.actor = [[statement objectForKey:@"authority"] objectForKey:@"name"];
+                _s.actor = [[statement objectForKey:@"authority"] objectForKey:@"name"];
             }else if ([key isEqualToString:@"verb"]){
-                s.verb = [[[statement objectForKey:@"verb"] objectForKey:@"display"] objectForKey:@"en-US"];
+                _s.verb = [[[statement objectForKey:@"verb"] objectForKey:@"display"] objectForKey:@"en-US"];
             }else if ([key isEqualToString:@"object"]){
-                s.object = [[[[statement objectForKey:@"object"] objectForKey:@"definition"] objectForKey:@"description"] objectForKey:@"en-US"];
+                _s.object = [[[[statement objectForKey:@"object"] objectForKey:@"definition"] objectForKey:@"description"] objectForKey:@"en-US"];
+            }else if ([key isEqualToString:@"location"]){
+                _s.longitude = [[statement objectForKey:@"location"] objectForKey:@"longitude"];
+                _s.latitude = [[statement objectForKey:@"location"] objectForKey:@"latitude"];
             }
-           // NSLog(@"Statement list: %@", statement);
-            NSLog(@"Id: %@", s.iD);
-            NSLog(@"Actor: %@", s.actor);
-            NSLog(@"Verb: %@", s.verb);
-            NSLog(@"Object: %@", s.object);
-           
         }
-        [stmnts.statements arrayByAddingObject:s];
+        [temp addObject:_s];
+        // NSLog(@"Statement list: %@", statement);
+        NSLog(@"Id: %@", _s._id);
+        NSLog(@"Actor: %@", _s.actor);
+        NSLog(@"Verb: %@", _s.verb);
+        NSLog(@"Object: %@", _s.object);
+        NSLog(@"Longitude: %@", _s.longitude);
+        NSLog(@"Latitude: %@", _s.latitude);
+        if ([dbm saveData:_s._id actor:_s.actor verb:_s.verb object:_s.object longitude:_s.longitude
+                 latitude:_s.latitude]){
+            NSLog(@"Db save success");
+        }
         
-        }
-    if([dbm createDB]){
-        NSLog(@"Db create success");
     }
-    if ([dbm saveData:s.iD actor:s.actor verb:s.verb object:s.object]){
-        NSLog(@"Db save success");
-    }
-    
+    [_stmnts setStatements:temp];
 }
 
 - (void)didReceiveMemoryWarning {
