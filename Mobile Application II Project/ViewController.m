@@ -9,7 +9,8 @@
 #import "ViewController.h"
 #import "Statement.h"
 #import "Statements.h"
-#import "DBManager.h"
+#import "DisplayStatements.h"
+#import "DownloadAndDisplayStatements.h"
 
 @interface ViewController ()
 
@@ -19,15 +20,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *staticTitle;
 @end
 
-
-
 @implementation ViewController
 
-DBManager *dbm;
+DisplayStatements* ds;
+DownloadAndDisplayStatements* dds;
+EXPStatementsResult* res;
 
 - (IBAction)btnDisplay:(id)sender {
 }
 - (IBAction)btnDonloadAndDisplay:(id)sender {
+    [[EXPAPI defaultAPI] getStatementsWithQuery:[EXPStatementQuery statementQueryWithLimit:10] delegate:self];
+    res = [[EXPStatementsResult alloc] init];
+    [self statementsReceived:res];
 }
 - (IBAction)btnReset:(id)sender {
 }
@@ -41,58 +45,16 @@ DBManager *dbm;
     _staticTitle.textAlignment = NSTextAlignmentCenter;
     _textPasswd.secureTextEntry = YES;
     
-    NSError *err = nil;
-    
-    NSString *dataPath = [[NSBundle mainBundle] pathForResource:@"arrayList" ofType:@"json"];
-    
-    NSLog(@"JSON Path: %@", dataPath);
-    
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath] options:kNilOptions error:&err];
-    
-    NSArray* statements = [json objectForKey:@"statements"];
-    _stmnts = [Statements new];
-    dbm = [DBManager new];
-    
-    _stmnts.statements = [[NSMutableArray alloc] init];
-    NSMutableArray* temp = [[NSMutableArray alloc] init];
-    if([dbm createDB]){
-        NSLog(@"Db OK");
-    }
-    
-    for (int i = 0; i < statements.count; i++) {
-        NSDictionary* statement = [statements objectAtIndex:i];
-        _s = [Statement new];
-        for(NSString *key in [statement allKeys]){
-            if([key isEqualToString:@"id"]){
-                _s._id = [statement objectForKey:key];
-            }else if ([key isEqualToString:@"authority"]){
-                _s.actor = [[statement objectForKey:@"authority"] objectForKey:@"name"];
-            }else if ([key isEqualToString:@"verb"]){
-                _s.verb = [[[statement objectForKey:@"verb"] objectForKey:@"display"] objectForKey:@"en-US"];
-            }else if ([key isEqualToString:@"object"]){
-                _s.object = [[[[statement objectForKey:@"object"] objectForKey:@"definition"] objectForKey:@"description"] objectForKey:@"en-US"];
-            }else if ([key isEqualToString:@"location"]){
-                _s.longitude = [[statement objectForKey:@"location"] objectForKey:@"longitude"];
-                _s.latitude = [[statement objectForKey:@"location"] objectForKey:@"latitude"];
-            }
-        }
-        [temp addObject:_s];
-        // NSLog(@"Statement list: %@", statement);
-        NSLog(@"Id: %@", _s._id);
-        NSLog(@"Actor: %@", _s.actor);
-        NSLog(@"Verb: %@", _s.verb);
-        NSLog(@"Object: %@", _s.object);
-        NSLog(@"Longitude: %@", _s.longitude);
-        NSLog(@"Latitude: %@", _s.latitude);
-        if ([dbm saveData:_s._id actor:_s.actor verb:_s.verb object:_s.object longitude:_s.longitude
-                 latitude:_s.latitude]){
-            NSLog(@"Db save success");
-        }
-        
-    }
-    [_stmnts setStatements:temp];
+    ds = [DisplayStatements new];
+    [ds loadJSON];
+    //[[EXPAPI defaultAPI] getStatementsWithQuery:[EXPStatementQuery statementQueryWithLimit:10] delegate:self];
+    [dds statementsReceived:res];
 }
-
+- (void) statementsReceived:(EXPStatementsResult *)result
+{
+    NSLog(@"%d statements received.", result.numberOfStatements);
+    NSLog(@"Statements: %@", result.statements);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

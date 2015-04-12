@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <xAPIKit/xAPIKit.h>
 
 @interface AppDelegate ()
 
@@ -16,8 +17,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.   
-    return YES;
+    if([EXPAPI configureDefaultAPIWithLRS:[NSURL URLWithString:@"https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/"]authorizationProvider:[[EXPBasicHTTPAuthentication alloc] initWithUsername:@"public" andPassword:@""]])
+    {
+        NSLog(@"Default API config DONE");
+        [EXPAPI setVersion: 1];
+        NSLog(@"Default API v. %ld", (long)[EXPAPI version]);
+     
+        return YES;
+    }
+    return NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

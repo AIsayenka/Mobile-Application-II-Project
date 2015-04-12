@@ -11,6 +11,9 @@
 		F44394D31AB3668800C1D4F5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F44394D21AB3668800C1D4F5 /* ViewController.m */; };
 		F44394D81AB3668800C1D4F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44394D71AB3668800C1D4F5 /* Images.xcassets */; };
 		F44394E71AB3668800C1D4F5 /* Mobile_Application_II_ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F44394E61AB3668800C1D4F5 /* Mobile_Application_II_ProjectTests.m */; };
+		F4458F6C1AD8A68400C55D56 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4458F6B1AD8A68400C55D56 /* SystemConfiguration.framework */; };
+		F4458F6E1AD8A68F00C55D56 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4458F6D1AD8A68F00C55D56 /* Security.framework */; };
+		F4458F701AD8A6D200C55D56 /* xAPIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4458F6F1AD8A6D200C55D56 /* xAPIKit.framework */; };
 		F45458821AD8891600050803 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45458801AD8891600050803 /* Main.storyboard */; };
 		F45458851AD8897D00050803 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45458831AD8897D00050803 /* LaunchScreen.xib */; };
 		F467E5FB1AD1F6A700EA6C96 /* Statements.m in Sources */ = {isa = PBXBuildFile; fileRef = F467E5FA1AD1F6A700EA6C96 /* Statements.m */; };
@@ -60,6 +63,9 @@
 		F44394E01AB3668800C1D4F5 /* Mobile Application II ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mobile Application II ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44394E51AB3668800C1D4F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F44394E61AB3668800C1D4F5 /* Mobile_Application_II_ProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mobile_Application_II_ProjectTests.m; sourceTree = "<group>"; };
+		F4458F6B1AD8A68400C55D56 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F4458F6D1AD8A68F00C55D56 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F4458F6F1AD8A6D200C55D56 /* xAPIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = xAPIKit.framework; path = "xAPIKit-1.0.2.0-DEMO/xAPIKit.framework"; sourceTree = "<group>"; };
 		F45458811AD8891600050803 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Mobile Application II Project/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		F45458841AD8897D00050803 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Mobile Application II Project/Base.lproj/LaunchScreen.xib"; sourceTree = "<group>"; };
 		F467E5F91AD1F6A700EA6C96 /* Statements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statements.h; sourceTree = "<group>"; };
@@ -88,6 +94,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4458F701AD8A6D200C55D56 /* xAPIKit.framework in Frameworks */,
+				F4458F6E1AD8A68F00C55D56 /* Security.framework in Frameworks */,
+				F4458F6C1AD8A68400C55D56 /* SystemConfiguration.framework in Frameworks */,
 				F4C5473D1AD73E2200500411 /* MapKit.framework in Frameworks */,
 				F4C547391AD73DBA00500411 /* libsqlite3.dylib in Frameworks */,
 			);
@@ -107,9 +116,10 @@
 			isa = PBXGroup;
 			children = (
 				F4D595ED1AD8671400C4C088 /* arrayList.json */,
-				F4C5473C1AD73E2200500411 /* MapKit.framework */,
 				F4C547381AD73DBA00500411 /* libsqlite3.dylib */,
 				F44394C91AB3668800C1D4F5 /* Mobile Application II Project */,
+				F4458F711AD8A6E900C55D56 /* Frameworks */,
+				F44394CA1AB3668800C1D4F5 /* Supporting Files */,
 				F44394E31AB3668800C1D4F5 /* Mobile Application II ProjectTests */,
 				F44394C81AB3668800C1D4F5 /* Products */,
 			);
@@ -136,7 +146,6 @@
 				F48E64C21AD1BE25006E411C /* DBManager.m */,
 				F44394D71AB3668800C1D4F5 /* Images.xcassets */,
 				F44394D91AB3668800C1D4F5 /* LaunchScreen.xib */,
-				F44394CA1AB3668800C1D4F5 /* Supporting Files */,
 				F467E6021AD1F8E700EA6C96 /* Statements */,
 			);
 			path = "Mobile Application II Project";
@@ -150,6 +159,7 @@
 				F4CDEF121AD7844D0093FDF4 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			path = "Mobile Application II Project";
 			sourceTree = "<group>";
 		};
 		F44394E31AB3668800C1D4F5 /* Mobile Application II ProjectTests */ = {
@@ -167,6 +177,17 @@
 				F44394E51AB3668800C1D4F5 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4458F711AD8A6E900C55D56 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4458F6F1AD8A6D200C55D56 /* xAPIKit.framework */,
+				F4458F6D1AD8A68F00C55D56 /* Security.framework */,
+				F4458F6B1AD8A68400C55D56 /* SystemConfiguration.framework */,
+				F4C5473C1AD73E2200500411 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		F467E6021AD1F8E700EA6C96 /* Statements */ = {
@@ -474,9 +495,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/GoogleMapsSDKDemos",
+					"$(PROJECT_DIR)/xAPIKit-1.0.2.0-DEMO",
 				);
 				INFOPLIST_FILE = "Mobile Application II Project/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -489,9 +512,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/GoogleMapsSDKDemos",
+					"$(PROJECT_DIR)/xAPIKit-1.0.2.0-DEMO",
 				);
 				INFOPLIST_FILE = "Mobile Application II Project/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

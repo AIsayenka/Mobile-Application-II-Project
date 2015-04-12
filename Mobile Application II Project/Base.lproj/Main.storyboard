@@ -148,7 +148,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="AFe-R8-Rbk" kind="push" identifier="Statement" trigger="accessoryAction" id="i7Q-pR-Ije"/>
+                                    <segue destination="AFe-R8-Rbk" kind="push" identifier="Statement" trigger="accessoryAction" id="ZRG-rJ-ha9"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

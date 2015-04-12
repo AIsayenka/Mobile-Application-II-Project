@@ -59,10 +59,10 @@ static sqlite3_stmt *statement = nil;
 }
 -(BOOL)saveData:(NSString*)_id actor:(NSString*)actor verb:(NSString*)verb object:(NSString*)object
       longitude:(NSString*)lon latitude:(NSString*)lat{
+    
     NSString* docDir;
     NSArray* dirPaths;
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    
     dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
     docDir = dirPaths[0];
     
@@ -73,7 +73,7 @@ static sqlite3_stmt *statement = nil;
     if (sqlite3_open(dbpath, &database)==SQLITE_OK) {
         
         NSString* insertSQL = [NSString stringWithFormat:@"insert into statements(_id, actor, verb, object, lon, lat) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%f\", \"%f\")",_id , actor, verb, object, [lat floatValue], [lon floatValue]];
-        NSLog(@"Float values: %f %f",[lat floatValue], [lon floatValue] );
+//        NSLog(@"Float values: %f %f",[lat floatValue], [lon floatValue] );
         const char* sql_stmt = [insertSQL UTF8String];
         
         if(sqlite3_prepare_v2(database, sql_stmt, -1, &statement,NULL)==SQLITE_OK){
@@ -107,7 +107,7 @@ static sqlite3_stmt *statement = nil;
     NSArray* dirPaths;
     int y;
     
-    temp = _s.statements;
+    temp = _s.stm;
     
     dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
     docDir = dirPaths[0];

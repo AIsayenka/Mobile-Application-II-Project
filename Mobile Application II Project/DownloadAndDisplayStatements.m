@@ -9,6 +9,13 @@
 #import "DownloadAndDisplayStatements.h"
 
 @implementation DisplayStatements(DownloadAndDisplayStatements)
--(void)DownloadAndLoadJSON{    
+
+-(void)downloadAndLoadJSON{
 }
+
+-(void) statementsReceived:(EXPStatementsResult *)result{
+    NSLog(@"%d statements received.", result.numberOfStatements);
+    NSLog(@"Statements: %@", result.statements);
+}
+
 @end

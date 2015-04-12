@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "DisplayStatements.h"
 #import "DBManager.h"
+#import <xAPIKit/xAPIKit.h>
 
-@interface ViewController : UIViewController 
+@interface ViewController : UIViewController <EXPAPIStatementRequestDelegate>
 
 @property(strong, nonatomic) Statement* s;
 @property(strong, nonatomic) Statements* stmnts;

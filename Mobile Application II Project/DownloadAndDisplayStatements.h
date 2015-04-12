@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <xAPIKit/xAPIKit.h>
 #import "DisplayStatements.h"
 
-@interface DisplayStatements(DownloadAndDisplayStatements)
--(void)DownloadAndLoadJSON;
+@interface DownloadAndDisplayStatements : DisplayStatements<EXPAPIStatementRequestDelegate>
+
+-(void)downloadAndLoadJSON;
+
 @end

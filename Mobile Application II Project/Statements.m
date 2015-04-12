@@ -13,15 +13,15 @@
 -(id)init{
     self = [super init];
     if(self){
-        _statements = nil;
+        _stm = nil;
     }
     return self;
 }
 
--(void)setStatements:(NSMutableArray *)statements{
-    _statements = statements;
+-(void)setStm:(NSMutableArray *)statements{
+    _stm = statements;
 }
--(NSMutableArray*)getStatements{
-    return _statements;
+-(NSMutableArray*)getStm{
+    return _stm;
 }
 @end

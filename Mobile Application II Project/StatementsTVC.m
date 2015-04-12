@@ -47,9 +47,11 @@ DBManager *dbm;
     // Configure the cell...
     
     self.statement = [self.list objectAtIndex:[indexPath row]];
+    
     [cell.textLabel setText:[self.statement objectAtIndex:1]];
     cell.textLabel.font = [UIFont italicSystemFontOfSize:12.0f];
-    
+    cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:10.0f];
+    [cell.detailTextLabel setText:[self.statement objectAtIndex:3]];
     return cell;
 }
 
