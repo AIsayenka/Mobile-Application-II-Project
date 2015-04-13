@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <xAPIKit/xAPIKit.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [GMSServices provideAPIKey:@"AIzaSyAAEq82qlwH4ar5oguutHQ7MshMxI7Qtzo"];
     if([EXPAPI configureDefaultAPIWithLRS:[NSURL URLWithString:@"https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/"]authorizationProvider:[[EXPBasicHTTPAuthentication alloc] initWithUsername:@"public" andPassword:@""]])
     {
         NSLog(@"Default API config DONE");
