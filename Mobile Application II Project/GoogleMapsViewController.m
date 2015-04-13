@@ -28,26 +28,11 @@
     //{
         for(int i = 0; i < data.count; i++)
         {
-            NSDictionary* statement = [data objectAtIndex:i];
-            Statement* _s = [Statement new];
-            for(NSString *key in [statement allKeys]){
-                if([key isEqualToString:@"id"]){
-                    _s._id = [statement objectForKey:key];
-                }else if ([key isEqualToString:@"authority"]){
-                    _s.actor = [[statement objectForKey:@"authority"] objectForKey:@"name"];
-                }else if ([key isEqualToString:@"verb"]){
-                    _s.verb = [[[statement objectForKey:@"verb"] objectForKey:@"display"] objectForKey:@"en-US"];
-                }else if ([key isEqualToString:@"object"]){
-                    _s.object = [[[[statement objectForKey:@"object"] objectForKey:@"definition"] objectForKey:@"description"] objectForKey:@"en-US"];
-                }else if ([key isEqualToString:@"location"]){
-                    _s.longitude = [[statement objectForKey:@"location"] objectForKey:@"longitude"];
-                    _s.latitude = [[statement objectForKey:@"location"] objectForKey:@"latitude"];
-                }
-            }
+            
 
-            CLLocationCoordinate2D position = { [_s.latitude doubleValue], [_s.longitude doubleValue] };
+            CLLocationCoordinate2D position = { [data[i][5] doubleValue], [data[i][6] doubleValue] };
             GMSMarker *marker = [GMSMarker markerWithPosition:position];
-            marker.title = [NSString stringWithFormat:@"Actor: %@\nStatement ID: %@", _s.actor, _s._id];
+            marker.title = [NSString stringWithFormat:@"Actor: %@\nStatement ID: %@", data[i][2], data[i][1]];
             marker.appearAnimation = YES;
             marker.flat = YES;
             marker.snippet = @"";
